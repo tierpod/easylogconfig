@@ -19,13 +19,13 @@ def parse_args():
 
 def main():
     args = parse_args()
-    easylogconfig.configure(syslog_tag=args.log_tag, log_file=args.log_file, debug=args.debug)
-    # if args.log_tag:
-    #     easylogconfig.to_syslog(tag="testtag", debug=args.debug)
-    # elif args.log_file:
-    #     easylogconfig.to_file(path=args.log_file, debug=args.debug)
-    # else:
-    #     easylogconfig.to_stdout()
+
+    easylogconfig.auto(
+        syslog_tag=args.log_tag,
+        file_name=args.log_file,
+        debug=args.debug,
+        datetime=True,
+    )
 
     log.info("info")
     log.error("error")
@@ -34,4 +34,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

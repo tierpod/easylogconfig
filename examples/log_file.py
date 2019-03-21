@@ -7,8 +7,7 @@ import easylogconfig
 log = logging.getLogger(__name__)
 
 
-easylogconfig.to_file(datetime=True, thread=True, debug=True, path="/tmp/123.log")
-
+easylogconfig.auto(file_name="/tmp/example.log", datetime=True, thread=True, debug=True)
 
 log.info("info message")
 log.error("error message")

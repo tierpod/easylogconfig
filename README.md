@@ -1,8 +1,10 @@
 easylogconfig
 =============
 
-This python library provides simple wrapper for standart logging module. It helps you configure
-logger in simple cases without reading a lot of [documentation][1] and writing a lot of code.
+This python library provides simple wrapper for standart logging module.
+
+If you want something more than "logging.basicConfig", but don't want to read a lot of
+[documentation][1] and to write a lot of code.
 
 Usage
 -----
@@ -15,8 +17,12 @@ import easylogconfig
 
 log = logging.getLogger(__name__)
 
-# print messages to stdout, add debug level and datetime
-easylogconfig.auto(debug=True, datetime=True)
+# print messages to the stdout, add debug level
+easylogconfig.auto(debug=True)
+# or print messages to the syslog
+easylogconfig.auto(syslog_tag="example_tag")
+# or print messages to the file without datetime
+easylogconfig.auto(file_name="/var/log/example.log", file_backup_count=30, datetime=False)
 
 log.info("info message")
 log.debug("debug message")

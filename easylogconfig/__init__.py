@@ -31,7 +31,8 @@ def auto(debug=False, thread=True, datetime=True,
 
     # if we get syslog_tag, use SysLogHandler
     if syslog_tag:
-        fmt = syslog_tag + ": " + fmt
+        # always disable datetime for syslog messages
+        fmt = syslog_tag + ": " + choose_format(datetime=False, thread=thread)
         handler = logging.handlers.SysLogHandler(address=syslog_address)
         formatter = logging.Formatter(fmt=fmt, datefmt=_DATE_FMT)
 

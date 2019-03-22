@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="easylogconfig",
-    version="0.1",
+    version="0.1.1",
     description="Easy configure logging",
     url="https://github.com/tierpod/easylogconfig",
     author="Pavel Podkorytov",

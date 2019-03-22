@@ -9,14 +9,15 @@ import logging.handlers
 _DATE_FMT = "%Y-%m-%d/%H:%M:%S"
 
 
-def auto(debug=False, thread=True, datetime=True,
+def auto(debug=False, thread=False, datetime=True,
          syslog_tag=None, syslog_address="/dev/log",
          file_name=None, file_when="midnight", file_backup_count=7):
     """Configure handler from input arguments.
 
-    If syslog_tag passed, configure Syslog handler.
-    Else if file_name passed, configure TimedRotatingFileHandler handler.
-    Else create Stdout handler.
+    If syslog_tag passed, configure Syslog handler. Else if file_name passed, configure
+    TimedRotatingFileHandler handler. Else create Stdout handler.
+
+    Full output format: 2019-03-22/10:17:28 MainThread INFO    info message
 
     More information: https://docs.python.org/2.7/library/logging.handlers.html
     """

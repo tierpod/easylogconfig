@@ -7,7 +7,7 @@ import easylogconfig
 log = logging.getLogger(__name__)
 
 
-easylogconfig.auto(syslog_tag="example_tag", debug=True, datetime=True, thread=False)
+easylogconfig.auto(syslog_tag="example_tag", debug=True)
 
 log.info("info message")
 log.error("error message")

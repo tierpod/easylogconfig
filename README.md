@@ -21,11 +21,15 @@ log = logging.getLogger(__name__)
 easylogconfig.auto(debug=True)
 # or print messages to the syslog
 easylogconfig.auto(syslog_tag="example_tag")
-# or print messages to the file without datetime
-easylogconfig.auto(file_name="/var/log/example.log", file_backup_count=30, datetime=False)
+# or print messages to the file without datetime but with thread names
+easylogconfig.auto(file_name="/var/log/example.log", file_backup_count=30,
+                   datetime=False, thread=True)
 
 log.info("info message")
 log.debug("debug message")
+
+# output format:
+# 2019-03-22/10:17:28 INFO    info message
 ```
 
 Configuration
@@ -35,7 +39,7 @@ Library provides one simple function **auto** with arguments:
 
 * formatter arguments:
   * *debug=False*: add debug level to output?
-  * *thread=True*: add thread names to messages?
+  * *thread=False*: add thread names to messages?
   * *datetime=True*: add datetime to messages?
 * [SysLogHandler][2] arguments:
   * **syslog_tag=None**: if set to str, log messages to syslog with this tag

@@ -10,9 +10,16 @@ init-dev:
 clean:
 	rm -rf build dist *.egg-info
 	find ./ -name '*.pyc' -delete
-	find ./ -name __pycache__ -type d -print | xargs rm -r
+	find ./ -name __pycache__ -type d -print | xargs rm -rf
 
 .PHONY: archive
 archive:
-	python setup.py sdist
+	python setup.py sdist bdist_wheel
 
+.PHONY: pypi-test-upload
+pypi-test-upload:
+	twine upload --repository testpypi dist/*
+
+.PHONY: pypi-upload
+pypi-upload:
+	twine upload --repository pypi dist/*

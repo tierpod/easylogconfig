@@ -56,6 +56,21 @@ messages to the file, pass **file_name** argument.
 Installation
 ------------
 
+```bash
+pip install -U easylogconfig
+# or
+pip install -U git+https://github.com/tierpod/easylogconfig#egg=easylogconfig
+```
+
+Development
+-----------
+
+```bash
+make venv
+sourve ./venv/bin/activate
+make init-dev init
+```
+
 [1]: https://docs.python.org/2.7/howto/logging.html
 [2]: https://docs.python.org/2.7/library/logging.handlers.html#sysloghandler
 [3]: https://docs.python.org/2.7/library/logging.handlers.html#timedrotatingfilehandler

@@ -38,9 +38,10 @@ Configuration
 Library provides one simple function **auto** with arguments:
 
 * formatter arguments:
-  * *debug=False*: add debug level to output?
+  * *debug=False*: add debug messages to output?
   * *thread=False*: add thread names to messages?
   * *datetime=True*: add datetime to messages?
+  * *level=False*: add level names to messages?
 * [SysLogHandler][2] arguments:
   * **syslog_tag=None**: if set to str, log messages to syslog with this tag
   * *syslog_address="/dev/log"*: syslog server address

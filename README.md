@@ -68,7 +68,7 @@ Development
 
 ```bash
 make venv
-sourve ./venv/bin/activate
+source ./venv/bin/activate
 make init-dev init
 ```
 

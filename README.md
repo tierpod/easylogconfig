@@ -50,9 +50,12 @@ Library provides one simple function **auto** with arguments:
   * *file_when="midnight"*: file rotating time
   * *file_backup_count=7*: keep last files
 
-If you want to log messages to the stdout, don't pass **syslog_tag** or **file_name** arguments. If
-you want to log messages to the syslog server, pass **syslog_tag** argument. If you want to log
-messages to the file, pass **file_name** argument.
+Log handlers configuration rules:
+
+* *StreamHandler* will be used if **syslog_tag** or **file_name** are omitted or empty strings
+* *SysLogHandler* will be used if **syslog_tag** is set to none-empty string
+* *TimedRotatingFileHandler* will be used if **file_name** is set to none-empty string
+* *ValueError* will be raised if both **syslog_tag** and **file_name** are set to none-empty string
 
 Installation
 ------------
@@ -69,7 +72,7 @@ Development
 ```bash
 make venv
 source ./venv/bin/activate
-make init-dev init
+(venv) make init-dev init
 ```
 
 [1]: https://docs.python.org/2.7/howto/logging.html

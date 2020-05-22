@@ -1,9 +1,12 @@
 """Contains functions to configure log output.
 """
 
+from __future__ import print_function
 import logging
 import logging.config
 import logging.handlers
+import os.path
+import sys
 
 
 _DATE_FMT = "%Y-%m-%d/%H:%M:%S"
@@ -26,7 +29,7 @@ def auto(debug=False, thread=False, datetime=True, level=True,
         level (bool): add level name to log messages?
 
         syslog_tag (str): syslog tag
-        syslog_address (str or tuple): address of syslog server
+        syslog_address (str or tuple[str, int]): address of syslog server
 
         file_name (str): path to the log file
         file_when (str): type of rotating interval
@@ -45,6 +48,9 @@ def auto(debug=False, thread=False, datetime=True, level=True,
 
     # if we get syslog_tag, use SysLogHandler
     if syslog_tag:
+        if syslog_address.startswith("/") and not os.path.exists(syslog_address):
+            print("%s not found, fallback to ('127.0.0.1', 514)" % syslog_address, file=sys.stderr)
+            syslog_address = ("127.0.0.1", 514)
         # always disable datetime for syslog messages
         fmt = syslog_tag + ": " + choose_format(datetime=False, thread=thread, level=level)
         handler = logging.handlers.SysLogHandler(address=syslog_address)

@@ -8,7 +8,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="easylogconfig",
-    version="0.1.4",
+    version="0.2.0",
     description="Easy configure logging",
     url="https://github.com/tierpod/easylogconfig",
     author="Pavel Podkorytov",
@@ -18,7 +18,6 @@ setup(
     long_description_content_type="text/markdown",
     classifiers=[
         "Development Status :: 3 - Alpha",
-        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
     ],
     packages=find_packages(),

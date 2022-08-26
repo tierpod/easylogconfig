@@ -48,9 +48,15 @@ def auto(debug=False, thread=False, datetime=True, level=True,
 
     # if we get syslog_tag, use SysLogHandler
     if syslog_tag:
-        if syslog_address.startswith("/") and not os.path.exists(syslog_address):
-            print("%s not found, fallback to ('127.0.0.1', 514)" % syslog_address, file=sys.stderr)
-            syslog_address = ("127.0.0.1", 514)
+        if isinstance(syslog_address, str):
+            if syslog_address.startswith("/"):
+                # syslog_address can point to file like "/dev/log"
+                if not os.path.exists(syslog_address):
+                    print("%s not found, fallback to ('127.0.0.1', 514)" % syslog_address, file=sys.stderr)
+                    syslog_address = ("127.0.0.1", 514)
+            else:
+                # syslog_address is ip address or hostname without port
+                syslog_address = (syslog_address, 514)
         # always disable datetime for syslog messages
         fmt = syslog_tag + ": " + choose_format(datetime=False, thread=thread, level=level)
         handler = logging.handlers.SysLogHandler(address=syslog_address)

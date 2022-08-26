@@ -44,7 +44,9 @@ Library provides one simple function **auto** with arguments:
   * *level=False*: add level names to messages?
 * [SysLogHandler][2] arguments:
   * **syslog_tag=None**: if set to str, log messages to syslog with this tag
-  * *syslog_address="/dev/log"*: syslog server address
+  * *syslog_address="/dev/log"*: syslog server address. By default, it sends syslog messages via
+    `/dev/log` file. It can be set to string (ip address or hostname, in this case default 514 port
+    is used), or to Tuple[str, int] (like [logging.handlers.SysLogHandler][2])
 * [TimedRotatingFileHandler][3] arguments:
   * **file_name=None**: if set to str, log messages to this tile
   * *file_when="midnight"*: file rotating time
@@ -75,6 +77,6 @@ source ./venv/bin/activate
 (venv) make init-dev init
 ```
 
-[1]: https://docs.python.org/2.7/howto/logging.html
-[2]: https://docs.python.org/2.7/library/logging.handlers.html#sysloghandler
-[3]: https://docs.python.org/2.7/library/logging.handlers.html#timedrotatingfilehandler
+[1]: https://docs.python.org/3.6/howto/logging.html
+[2]: https://docs.python.org/3.6/library/logging.handlers.html#logging.handlers.SysLogHandler
+[3]: https://docs.python.org/3.6/library/logging.handlers.html#timedrotatingfilehandler

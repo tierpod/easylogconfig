@@ -5,7 +5,7 @@ DOCKER_CMD ?= docker
 VER        := $(shell awk '/Version:/ {print $$2}' $(SPEC))
 ARCHIVE    := $(NAME)-$(VER).tar.gz
 USERID     := $(shell id -u)
-IMAGE      := builder-centos8_easyloconfig
+IMAGE      := builder-ol8_easyloconfig
 
 ifeq ($(DOCKER),1)
 CMD_PREFIX := $(DOCKER_CMD) run --rm -it -v $(PWD):/host:ro -v $(HOME)/rpmbuild:/home/builder/rpmbuild:rw $(IMAGE)

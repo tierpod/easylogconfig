@@ -4,7 +4,9 @@ easylogconfig
 This python library provides simple wrapper for standart logging module.
 
 If you want something more than "logging.basicConfig", but don't want to read a lot of
-[documentation][1] and to write a lot of code.
+[documentation][1] and write a lot of code.
+
+**WARNING** Since v0.2 python 2 is not supported anymore.
 
 Usage
 -----
@@ -21,6 +23,8 @@ log = logging.getLogger(__name__)
 easylogconfig.auto(debug=True)
 # or print messages to the syslog
 easylogconfig.auto(syslog_tag="example_tag")
+# or log messages to remote syslog server
+easylogconfig.auto(syslog_tag="example_tag", syslog_address=("127.0.0.1", 514))
 # or print messages to the file without datetime but with thread names
 easylogconfig.auto(file_name="/var/log/example.log", file_backup_count=30,
                    datetime=False, thread=True)
@@ -63,9 +67,9 @@ Installation
 ------------
 
 ```bash
-pip install -U easylogconfig
+python3 -m pip install -U easylogconfig
 # or
-pip install -U git+https://github.com/tierpod/easylogconfig#egg=easylogconfig
+python3 -m pip install -U git+https://github.com/tierpod/easylogconfig#egg=easylogconfig
 ```
 
 Development

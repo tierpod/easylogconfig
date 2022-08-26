@@ -35,7 +35,7 @@ def auto(debug=False, thread=False, datetime=True, level=True,
         file_when (str): type of rotating interval
         file_backup_count (int): keep last N files
 
-    More information: https://docs.python.org/2.7/library/logging.handlers.html
+    More information: https://docs.python.org/3.6/library/logging.handlers.html
     """
 
     if syslog_tag and file_name:

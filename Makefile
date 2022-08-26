@@ -1,10 +1,10 @@
 venv:
-	virtualenv -p /usr/bin/python venv
+	python3 -m venv $@
 
 .PHONY: init-dev
 init-dev:
-	pip install -U -r requirements-dev$(PY).txt
-	pip install -U --editable .
+	python3 -m pip install -U -r requirements-dev.txt
+	python3 -m pip install -U --editable .
 
 .PHONY: clean
 clean:
@@ -14,7 +14,7 @@ clean:
 
 .PHONY: archive
 archive:
-	python setup.py sdist bdist_wheel
+	python3 setup.py sdist bdist_wheel
 
 .PHONY: pypi-test-upload
 pypi-test-upload:
